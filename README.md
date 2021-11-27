@@ -1,7 +1,7 @@
-Advent of Code 2019
-====================================
+Advent of Code 2016
+===================
 
-Just my solutions for [Advent of Code 2016](https://adventofcode.com/2016).
+My solutions for [Advent of Code 2016](https://adventofcode.com/2016).
 
 ~~~~
 With testing
