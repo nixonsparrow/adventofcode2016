@@ -43,11 +43,41 @@ class TestPuzzles:
         except AssertionError:
             self.results += f'\nDay 2.2  {10 * "."}FAILURE'
 
+    def puzzle_3_1(self):
+        try:
+            assert puzzles.is_triangle([5, 15, 19]) is True
+            assert puzzles.is_triangle([5, 15, 25]) is False
+            assert 983 == puzzles.day3_1('inputs/day3_final.txt')
+
+            self.results += f'\nDay 3.1  {10*"."}SUCCESS'
+        except AssertionError:
+            self.results += f'\nDay 3.1  {10 * "."}FAILURE'
+
+    def puzzle_3_2(self):
+        try:
+            assert 6 == puzzles.day3_2('inputs/day3_2_test.txt')
+            assert 1836 == puzzles.day3_2('inputs/day3_final.txt')
+
+            self.results += f'\nDay 3.2  {10*"."}SUCCESS'
+        except AssertionError:
+            self.results += f'\nDay 3.2  {10 * "."}FAILURE'
+
+    def puzzle_4_1(self):
+        try:
+            assert 1836 == puzzles.day3_2('inputs/day3_final.txt')
+
+            self.results += f'\nDay 4.1  {10*"."}SUCCESS'
+        except AssertionError:
+            self.results += f'\nDay 4.1  {10 * "."}FAILURE'
+
     def test_all(self, print_results=False):
         self.puzzle_1_1()
         self.puzzle_1_2()
         self.puzzle_2_1()
         self.puzzle_2_2()
+        self.puzzle_3_1()
+        self.puzzle_3_2()
+        self.puzzle_4_1()
 
         if print_results:
             print(self.results)
