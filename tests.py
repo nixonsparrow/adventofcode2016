@@ -64,7 +64,7 @@ class TestPuzzles:
 
     def puzzle_4_1(self):
         try:
-            assert 1836 == puzzles.day3_2('inputs/day3_final.txt')
+            assert puzzles.day3_2('inputs/day4_1_test1.txt.txt') is True
 
             self.results += f'\nDay 4.1  {10*"."}SUCCESS'
         except AssertionError:

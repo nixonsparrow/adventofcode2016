@@ -107,13 +107,6 @@ def is_triangle(triangle):
     return False
 
 
-def is_triangle_vertically(triangle, triangles):
-    try:
-        triangle_index = triangles.index(triangle)
-    except IndexError:
-        return
-
-
 ### PUZZLES MAIN
 # -------------------------- day 1
 def day1_1(input_file=''):
