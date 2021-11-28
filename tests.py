@@ -64,11 +64,25 @@ class TestPuzzles:
 
     def puzzle_4_1(self):
         try:
-            assert puzzles.day3_2('inputs/day4_1_test1.txt.txt') is True
+            assert puzzles.is_room_real(open('inputs/day4_1_test1.txt').readline()) is True
+            assert puzzles.is_room_real(open('inputs/day4_1_test2.txt').readline()) is True
+            assert puzzles.is_room_real(open('inputs/day4_1_test3.txt').readline()) is True
+            assert puzzles.is_room_real(open('inputs/day4_1_test4.txt').readline()) is False
+            assert puzzles.get_room_value(open('inputs/day4_1_test1.txt').readline()) == 123
+            assert puzzles.day4_1('inputs/day4_final.txt') == 278221
 
             self.results += f'\nDay 4.1  {10*"."}SUCCESS'
         except AssertionError:
             self.results += f'\nDay 4.1  {10 * "."}FAILURE'
+
+    def puzzle_4_2(self):
+        try:
+            assert puzzles.caesar_decrypter('qzmt-zixmtkozy-ivhz-343') == 'very encrypted name'
+            assert puzzles.day4_2('inputs/day4_final.txt') == 267
+
+            self.results += f'\nDay 4.2  {10*"."}SUCCESS'
+        except AssertionError:
+            self.results += f'\nDay 4.2  {10 * "."}FAILURE'
 
     def test_all(self, print_results=False):
         self.puzzle_1_1()
@@ -78,6 +92,7 @@ class TestPuzzles:
         self.puzzle_3_1()
         self.puzzle_3_2()
         self.puzzle_4_1()
+        self.puzzle_4_2()
 
         if print_results:
             print(self.results)
