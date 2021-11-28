@@ -159,6 +159,28 @@ def caesar_decrypter(code_with_id):
     return password
 
 
+def door_breaker(door_id, advanced=False):
+    import hashlib
+
+    password = [x for x in '_' * 8]
+    i = 0
+    while '_' in password:
+        next_code = ''.join([door_id, str(i)])
+        next_hash = hashlib.md5(next_code.encode())
+        if next_hash.hexdigest().startswith('00000'):
+            if advanced:
+                _hash = next_hash.hexdigest()
+                if _hash[5].isdigit() and -1 < int(_hash[5]) < 8:
+                    _index = int(_hash[5])
+                    if password[_index] == '_':
+                        password[_index] = _hash[6]
+            else:
+                password[password.index('_')] = next_hash.hexdigest()[5]
+        i += 1
+
+    return ''.join(password)
+
+
 ### PUZZLES MAIN
 # -------------------------- day 1
 def day1_1(input_file=''):
@@ -217,8 +239,15 @@ def day4_2(input_file=''):
 
 
 # -------------------------- day 5
+def day5_1(code=''):
+    return door_breaker(code)
+
+
+def day5_2(code=''):
+    return door_breaker(code, advanced=True)
 
 
 if __name__ == '__main__':
-    print(caesar_decrypter('qzmt-zixmtkozy-ivhz-343'))
-    print(day4_2('inputs/day4_final.txt'))
+    # print(caesar_decrypter('qzmt-zixmtkozy-ivhz-343'))
+    # print(day4_2('inputs/day4_final.txt'))
+    print(day5_1('abc'))
