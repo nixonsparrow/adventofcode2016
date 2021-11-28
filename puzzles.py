@@ -123,7 +123,6 @@ def is_room_real(room):
         if encrypted_name.count(char) > checksum[list(checksum.keys())[-1]] \
                 and char not in checksum.keys():
             return False
-    # print('HERE!', checksum, list(checksum.keys())[-1])
 
     # check if total is in descending order
     sequence = [checksum[x] for x in checksum]
@@ -200,6 +199,7 @@ def day3_2(input_file=''):
     return find_triangles(all_sets.T.reshape(-1, 3))
 
 
+# -------------------------- day 4
 def day4_1(input_file=''):
     all_rooms = list(map(str, open(input_file).read().split('\n')))
     id_total_sum = sum([get_room_value(ax) for ax in all_rooms if is_room_real(ax)])
@@ -214,6 +214,9 @@ def day4_2(input_file=''):
             return int(code.split('-')[-1][:3])
 
     return None
+
+
+# -------------------------- day 5
 
 
 if __name__ == '__main__':
