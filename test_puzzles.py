@@ -55,6 +55,15 @@ class TestPuzzles:
         # assert day5_2('cxdnnyjw') == '999828ec'
         pass
 
+    def test_puzzle_6_1(self):
+        assert day6_1('inputs/day6_1_test.txt') == 'easter'
+
+    def test_puzzle_6_2(self):
+        assert day6_2('inputs/day6_final.txt') == 'evakwaga'
+
+    def test_puzzle_7_1(self):
+        assert day7_1('inputs/day7_1_test.txt') == 2
+
 
 if __name__ == '__main__':
     pass

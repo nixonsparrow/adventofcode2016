@@ -146,14 +146,13 @@ def is_room_real(room):
 
 def caesar_decrypter(code_with_id):
     import string
-    alphabet = string.ascii_lowercase * 2
+    alphabet = string.ascii_lowercase * 2       # double whole alphabet to avoid Index Errors
     caesar_key = int(code_with_id.split('-')[-1]) % 26
     encrypted_password = code_with_id.split('-')[:-1]
 
     password = ''
     for word in encrypted_password:
-        if encrypted_password.index(word) != 0:
-            password += ' '
+        password += ' ' if encrypted_password.index(word) != 0 else ''
         for char in word:
             password += (alphabet[alphabet.index(char) + caesar_key])
     return password
@@ -162,7 +161,7 @@ def caesar_decrypter(code_with_id):
 def door_breaker(door_id, advanced=False):
     import hashlib
 
-    password = [x for x in '_' * 8]
+    password = [x for x in '_' * 8]     # ['_', '_', '_', '_', '_', '_', '_', '_']
     i = 0
     while '_' in password:
         next_code = ''.join([door_id, str(i)])
@@ -179,6 +178,23 @@ def door_breaker(door_id, advanced=False):
         i += 1
 
     return ''.join(password)
+
+
+def clear_signal_from_noise(signal_list, modified_repetition_code=False):
+    old_array = [x for x in signal_list]
+    print(old_array)
+    new_array = []
+    for x in range(len(old_array[0])):  # create array rotated by 90 - easier to search for letter
+        new_array.append([word[x] for word in old_array])
+
+    if modified_repetition_code:        # get least common letter for each index
+        return ''.join([min(char_list, key=char_list.count) for char_list in new_array])
+    else:                               # get most common letter for each index
+        return ''.join([max(char_list, key=char_list.count) for char_list in new_array])
+
+
+def is_ip7_address_valid(address):
+    pass
 
 
 ### PUZZLES MAIN
@@ -247,7 +263,23 @@ def day5_2(code=''):
     return door_breaker(code, advanced=True)
 
 
+# -------------------------- day 6
+def day6_1(input_file=''):
+    final_input = list(map(str, open(input_file).read().split('\n')))
+    return clear_signal_from_noise(final_input)
+
+
+def day6_2(input_file=''):
+    final_input = list(map(str, open(input_file).read().split('\n')))
+    return clear_signal_from_noise(final_input, modified_repetition_code=True)
+
+
+# -------------------------- day 7
+def day7_1(input_file=''):
+    final_input = list(map(str, open(input_file).read().split('\n')))
+    valid_addresses = [ip7address for ip7address in final_input if is_ip7_address_valid(ip7address)]
+    return len(valid_addresses)
+
+
 if __name__ == '__main__':
-    # print(caesar_decrypter('qzmt-zixmtkozy-ivhz-343'))
-    # print(day4_2('inputs/day4_final.txt'))
-    print(day5_1('abc'))
+    print(day7_1('inputs/day7_1_test.txt'))
