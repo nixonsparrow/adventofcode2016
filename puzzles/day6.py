@@ -1,6 +1,5 @@
 def clear_signal_from_noise(signal_list, modified_repetition_code=False):
     old_array = [x for x in signal_list]
-    print(old_array)
     new_array = []
     for x in range(len(old_array[0])):  # create array rotated by 90 - easier to search for letter
         new_array.append([word[x] for word in old_array])
