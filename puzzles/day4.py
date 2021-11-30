@@ -1,3 +1,6 @@
+from os import path
+
+
 def get_room_value(room):
     return int(room.split('-')[-1][:3])
 
@@ -50,13 +53,13 @@ def caesar_decrypter(code_with_id):
 
 
 def part1(input_file=''):
-    all_rooms = list(map(str, open(input_file).read().split('\n')))
+    all_rooms = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     id_total_sum = sum([get_room_value(ax) for ax in all_rooms if is_room_real(ax)])
     return id_total_sum
 
 
 def part2(input_file=''):
-    all_codes = list(map(str, open(input_file).read().split('\n')))
+    all_codes = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     for code in all_codes:
         password = caesar_decrypter(code[:-7])
         if 'north' in password and 'pole' in password:

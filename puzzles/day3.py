@@ -1,4 +1,5 @@
 import numpy as np
+from os import path
 
 
 def is_triangle(triangle):
@@ -9,13 +10,13 @@ def is_triangle(triangle):
 
 
 def part1(input_file=''):
-    all_sets = np.loadtxt(input_file)
+    all_sets = np.loadtxt(path.dirname(__file__) + input_file)
 
     return sum([1 for tri in all_sets if is_triangle(tri)])
 
 
 def part2(input_file=''):
-    all_sets = np.loadtxt(input_file)
+    all_sets = np.loadtxt(path.dirname(__file__) + input_file)
 
     def find_triangles(np_array):
         np_array.sort(axis=-1)

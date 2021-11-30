@@ -1,3 +1,6 @@
+from os import path
+
+
 def clear_signal_from_noise(signal_list, modified_repetition_code=False):
     old_array = [x for x in signal_list]
     new_array = []
@@ -11,10 +14,10 @@ def clear_signal_from_noise(signal_list, modified_repetition_code=False):
 
 
 def part1(input_file=''):
-    final_input = list(map(str, open(input_file).read().split('\n')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     return clear_signal_from_noise(final_input)
 
 
 def part2(input_file=''):
-    final_input = list(map(str, open(input_file).read().split('\n')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     return clear_signal_from_noise(final_input, modified_repetition_code=True)

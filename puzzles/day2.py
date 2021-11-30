@@ -1,3 +1,6 @@
+from os import path
+
+
 def bathroom_keypad_clicker(moves_sequences, letters=False):
     if not letters:
         keypad = ((7, 8, 9),
@@ -50,10 +53,10 @@ def bathroom_keypad_clicker(moves_sequences, letters=False):
 
 
 def part1(input_file=''):
-    final_input = list(map(str, open(input_file).read().split('\n')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     return bathroom_keypad_clicker(final_input)
 
 
 def part2(input_file=''):
-    final_input = list(map(str, open(input_file).read().split('\n')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
     return bathroom_keypad_clicker(final_input, letters=True)

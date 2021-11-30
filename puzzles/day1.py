@@ -1,3 +1,6 @@
+from os import path
+
+
 def bunny_jumper(bunny_path, full_course=True):
     # ------------------------------ starting variables
     directions = ['N', 'E', 'S', 'W']
@@ -47,10 +50,10 @@ def bunny_jumper(bunny_path, full_course=True):
 
 
 def part1(input_file=''):
-    final_input = list(map(str, open(input_file).readline().replace(' ', '').split(',')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).readline().replace(' ', '').split(',')))
     return bunny_jumper(final_input)
 
 
 def part2(input_file=''):
-    final_input = list(map(str, open(input_file).readline().replace(' ', '').split(',')))
+    final_input = list(map(str, open(path.dirname(__file__) + input_file).readline().replace(' ', '').split(',')))
     return bunny_jumper(final_input, full_course=False)

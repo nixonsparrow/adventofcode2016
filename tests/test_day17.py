@@ -1,6 +1,8 @@
 from ..puzzles import day17
+import pytest
 
 
+@pytest.mark.ignored
 class TestDay17:
 
     def test_part1(self):
