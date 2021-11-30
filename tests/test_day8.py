@@ -17,8 +17,27 @@ class TestDay8:
         with pytest.raises(ValueError):
             day8.screen_visualisation([[0, 0], [0, 'x']])
 
-    def test_part1(self):
-        assert day8.part1('/../inputs/day8_test.txt') is 6
+    def test_count_lights(self):
+        day8.count_lights([[0, 1, 0, 0, 1, 0, 1]])
 
-    # def test_part2(self):
-    #     assert day8.part2() is None
+    def test_cmd_rectangle(self):
+        assert day8.command_rect(2, 2, [[0, 0, 0], [0, 0, 0]]) == [[1, 1, 0], [1, 1, 0]]
+        assert day8.command_rect(1, 1, [[0, 0, 0], [0, 0, 0]]) == [[1, 0, 0], [0, 0, 0]]
+
+    def test_cmd_rotate(self):
+        assert day8.rotate(0, 2, [[0, 1, 0, 0, 1, 0, 1]]) == [['0', '1', '0', '1', '0', '0', '1']]
+        assert day8.command_rotate('y', 0, 2, [[0, 1, 0, 0, 1, 0, 1]]) == [['0', '1', '0', '1', '0', '0', '1']]
+
+    def test_part1(self):
+        assert day8.part1('/../inputs/day8_test.txt', 7, 3) is 6
+        assert day8.part1('/../inputs/day8_final.txt') is 106
+
+    def test_part2(self):
+        assert day8.part2('/../inputs/day8_final.txt') == '''
+.##..####.#....####.#.....##..#...#####..##...###.
+#..#.#....#....#....#....#..#.#...##....#..#.#....
+#....###..#....###..#....#..#..#.#.###..#....#....
+#....#....#....#....#....#..#...#..#....#.....##..
+#..#.#....#....#....#....#..#...#..#....#..#....#.
+.##..#....####.####.####..##....#..#.....##..###..
+'''
