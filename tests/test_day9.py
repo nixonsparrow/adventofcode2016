@@ -9,4 +9,4 @@ class TestDay9:
         assert 2 == 2
 
     def test_part2(self):
-        assert 2 == 2
+        assert 2 == 22
