@@ -1,13 +1,15 @@
 from ..puzzles import day7
+import pytest
 
 
 class TestDay7:
 
-    def test_part1_methods(self):
+    @pytest.mark.parametrize('abba_string', ['abba', 'kyottor', list('jabbak')])
+    def test_part1_methods(self, abba_string):
 
-        assert day7.check_sequence_for_abba('abba') is True
-        assert day7.check_sequence_for_abba('kyottor') is True
-        assert day7.check_sequence_for_abba(list('jabbak')) is True
+        assert day7.check_sequence_for_abba(abba_string) is True
+        # assert day7.check_sequence_for_abba('kyottor') is True
+        # assert day7.check_sequence_for_abba(list('jabbak')) is True
 
         assert day7.check_sequence_for_abba('aaaa') is False
         assert day7.check_sequence_for_abba('abcdabcd') is False

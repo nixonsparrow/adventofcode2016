@@ -17,8 +17,10 @@ class TestDay8:
         with pytest.raises(ValueError):
             day8.screen_visualisation([[0, 0], [0, 'x']])
 
-    def test_count_lights(self):
-        day8.count_lights([[0, 1, 0, 0, 1, 0, 1]])
+    @pytest.mark.parametrize(('lights', 'counted'), [([[0, 1, 0, 0, 1, 0, 1]], 3),
+                             ([[0, 0], [0, 0]], 0), ([[[1, 0] for x in range(50)]], 50)])
+    def test_count_lights(self, lights, counted):
+        assert day8.count_lights(lights) == counted
 
     def test_cmd_rectangle(self):
         assert day8.command_rect(2, 2, [[0, 0, 0], [0, 0, 0]]) == [[1, 1, 0], [1, 1, 0]]
