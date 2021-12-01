@@ -1,13 +1,31 @@
+import re
 from os import path
 
 
 def txt_opener(input_file):
-    return list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
+    the_list = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
+    return the_list if len(the_list) > 1 else the_list[0]
 
 
-def decompressor(file):
-    dec_file = file
-    return dec_file
+def command_executor(sequence):
+    processed_sequence = sequence
+    return processed_sequence
+
+
+def decompressor(old_sequence):
+    new_sequence = ''
+    i = 0
+    while i < len(old_sequence):
+        if old_sequence[i] != '(':
+            new_sequence += old_sequence[i]
+            i += 1
+        else:
+            command = re.search(r'\d+x\d+', old_sequence[i:]).group()
+            cmd_length, length, multiplier = len(command) + 2, int(command.split('x')[0]), int(command.split('x')[1])
+            new_sequence += old_sequence[sum((i, cmd_length)): sum((i, cmd_length, length))] * multiplier
+            i += cmd_length + length
+
+    return new_sequence
 
 
 def part1(input_file=''):
@@ -22,4 +40,4 @@ def part2(input_file=''):
 
 
 if __name__ == '__main__':
-    print([input for input in txt_opener('/../inputs/day9_test.txt')])
+    print(decompressor('A(1x5)BC'))
