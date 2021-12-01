@@ -1,10 +1,6 @@
 import re
 from os import path
-
-
-def txt_opener(input_file):
-    the_list = list(map(str, open(path.dirname(__file__) + input_file).read().split('\n')))
-    return the_list if len(the_list) > 1 else the_list[0]
+from .methods import txt_opener
 
 
 def decompressor(old_sequence, count_max=False):
@@ -34,13 +30,13 @@ def decompressor(old_sequence, count_max=False):
 
 
 def part1(input_file=''):
-    final_input = txt_opener(input_file)
+    final_input = txt_opener(input_file, '\n')
     decompressed_file = decompressor(final_input)
     return len(decompressed_file)
 
 
 def part2(input_file=''):
-    final_input = txt_opener(input_file)
+    final_input = txt_opener(input_file, '\n')
     result = decompressor(final_input, count_max=True)
     return result
 

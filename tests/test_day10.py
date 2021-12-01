@@ -3,7 +3,6 @@ import pytest
 
 
 class TestDay10:
-    pytestmark = pytest.mark.ignored
 
     def test_part1(self):
         assert 2 == 2

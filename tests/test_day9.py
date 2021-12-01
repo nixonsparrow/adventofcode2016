@@ -4,7 +4,7 @@ import pytest
 
 class TestDay9:
     @pytest.mark.parametrize(('sequence', 'length'),
-        zip([input for input in day9.txt_opener('/../inputs/day9_1_test.txt')],
+        zip([input for input in day9.txt_opener('/../inputs/day9_1_test.txt', '\n')],
         (6, 7, 9, 11, 6, 18)))
     def test_examples(self, sequence, length):
         assert len(day9.decompressor(sequence)) == length
@@ -14,12 +14,6 @@ class TestDay9:
         assert day9.decompressor('A_(1x1)Test') == 'A_Test'
         assert day9.decompressor('A_(2x2)Te(2x2)st') == 'A_TeTestst'
         assert day9.decompressor('A_(4x2)Test') == 'A_TestTest'
-
-    @pytest.mark.parametrize(('filename', '_type'), zip(
-                             ('/../inputs/day9_1_test.txt', '/../inputs/day9_final.txt'),
-                             (list, str)))
-    def test_txt_opener(self, filename, _type):
-        assert type(day9.txt_opener(filename)) == _type
 
     def test_part1(self):
         assert day9.part1('/../inputs/day9_final.txt') == 112830

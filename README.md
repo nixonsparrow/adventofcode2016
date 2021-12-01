@@ -10,7 +10,12 @@ To quick check most tests use:
 ~~~~
 pytest
 ~~~~
-To include tests with completion time more than a couple of seconds, use:
+To see slightly more detailed results:
 ~~~~
-pytest --longrun
+pytest -v
+~~~~
+To include tests with completion time more than 
+a couple of seconds and future test templates, use:
+~~~~
+pytest --ignored
 ~~~~
